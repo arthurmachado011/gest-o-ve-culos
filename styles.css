@@ -1,0 +1,113 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 220px;
+    background-color: #007bff;
+    padding-top: 20px;
+    min-height: 100vh;
+    color: white;
+}
+
+.sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar .menu-item:hover,
+.sidebar .menu-item.active {
+    background-color: #0056b3;
+}
+
+.sidebar .menu-item .icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Estilo do conteúdo principal */
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+.section-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-section label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-section input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.vehicle-list {
+    margin-top: 20px;
+}
+
+.vehicle-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vehicle-item:last-child {
+    border-bottom: none;
+}

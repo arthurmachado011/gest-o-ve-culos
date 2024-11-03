@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Veículos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <a href="#" class="menu-item active">
+            <span class="icon">🚗</span> Gestão de Veículos
+        </a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <div class="section-header">Gestão de Veículos</div>
+        
+        <div class="container">
+            <div class="form-section">
+                <label for="placa">Placa do Veículo</label>
+                <input type="text" id="placa" placeholder="Digite a placa do veículo">
+                
+                <label for="dataEntrada">Data de Entrada</label>
+                <input type="datetime-local" id="dataEntrada">
+                
+                <label for="dataSaida">Data de Saída</label>
+                <input type="datetime-local" id="dataSaida">
+                
+                <button onclick="adicionarVeiculo()">Cadastrar Veículo</button>
+            </div>
+            
+            <div class="vehicle-list" id="vehicleList">
+                <!-- Lista de veículos será exibida aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const veiculos = [];
+
+        function adicionarVeiculo() {
+            const placa = document.getElementById('placa').value;
+            const dataEntrada = document.getElementById('dataEntrada').value;
+            const dataSaida = document.getElementById('dataSaida').value;
+            
+            if (placa === "" || dataEntrada === "") {
+                alert("Por favor, preencha a placa e a data de entrada.");
+                return;
+            }
+            
+            const veiculo = {
+                placa,
+                dataEntrada,
+                dataSaida: dataSaida || "Não registrada"
+            };
+
+            veiculos.push(veiculo);
+            exibirVeiculos();
+            
+            document.getElementById('placa').value = "";
+            document.getElementById('dataEntrada').value = "";
+            document.getElementById('dataSaida').value = "";
+        }
+
+        function exibirVeiculos() {
+            const vehicleList = document.getElementById('vehicleList');
+            vehicleList.innerHTML = "";
+
+            veiculos.forEach((veiculo, index) => {
+                const vehicleItem = document.createElement('div');
+                vehicleItem.classList.add('vehicle-item');
+                
+                vehicleItem.innerHTML = `
+                    <span><strong>Placa:</strong> ${veiculo.placa}</span>
+                    <span><strong>Entrada:</strong> ${veiculo.dataEntrada}</span>
+                    <span><strong>Saída:</strong> ${veiculo.dataSaida}</span>
+                    <button onclick="removerVeiculo(${index})">Remover</button>
+                `;
+                
+                vehicleList.appendChild(vehicleItem);
+            });
+        }
+
+        function removerVeiculo(index) {
+            veiculos.splice(index, 1);
+            exibirVeiculos();
+        }
+    </script>
+
+</body>
+</html>
